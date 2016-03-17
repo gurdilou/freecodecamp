@@ -1,0 +1,18 @@
+{
+  "name": "exo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "fib_odd.js",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-exec": "^2.1.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Thomas Luce <thomas.luce7342@gmail.com> (http://blog.luce.pro)",
+  "license": "ISC"
+}
