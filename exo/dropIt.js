@@ -15,7 +15,18 @@ console.log("===== Drop it =====");
 //     Array.slice()
 
 function drop(arr, func) {
-  // Drop them elements.
+  var exit = false;
+  while(!exit && (arr.length > 0)){
+    var number = arr[0];
+
+    if( !func(number) ){
+      arr.shift();
+    }else{
+      exit = true;
+    }
+  }
+
+  console.log("arr : "+arr);
   return arr;
 }
 
@@ -26,4 +37,4 @@ drop([0, 1, 0, 1], function(n) {return n === 1;}); // should return [1, 0, 1].
 drop([1, 2, 3], function(n) {return n > 0;}); // should return [1, 2, 3].
 drop([1, 2, 3, 4], function(n) {return n > 5;}); // should return [].
 drop([1, 2, 3, 7, 4], function(n) {return n > 3;}); // should return [7, 4].
-drop([1, 2, 3, 9, 2], function(n) {return n > 2;}); // should return [3, 9, 2]. 
+drop([1, 2, 3, 9, 2], function(n) {return n > 2;}); // should return [3, 9, 2].

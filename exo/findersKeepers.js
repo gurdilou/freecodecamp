@@ -10,7 +10,15 @@ console.log("===== Finders Keepers =====");
 
 function find(arr, func) {
   var num = 0;
-  return num;
+
+  arr = arr.filter(func);
+
+  if(arr.length === 0){
+    console.log("result : undefined");
+    return undefined;
+  }
+  console.log("result : "+arr[0]);
+  return arr[0];
 }
 
 find([1, 2, 3, 4], function(num){ return num % 2 === 0; });

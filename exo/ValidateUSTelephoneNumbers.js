@@ -19,6 +19,21 @@ console.log("===== Validate US Telephone Numbers =====");
 //
 //     RegExp
 
+function telephoneCheck(str) {
+  // Good luck!
+
+  var re = /^1?[\s]?(\([0-9]{3}\)|[0-9]{3})[\-\s]?[0-9]{3}[\-\s]?[0-9]{4}$/i;
+
+  var result = str.match(re);
+
+  console.log("result : "+result);
+  if(result){
+    return true;
+  }else{
+    return false;
+  }
+}
+
 
 telephoneCheck("555-555-5555"); // should return a boolean.
 telephoneCheck("1 555-555-5555"); // should return true.
@@ -43,4 +58,4 @@ telephoneCheck("(275)76227382"); // should return false.
 telephoneCheck("2(757)6227382"); // should return false.
 telephoneCheck("2(757)622-7382"); // should return false.
 telephoneCheck("555)-555-5555"); // should return false.
-telephoneCheck("(555-555-5555"); // should return false. 
+telephoneCheck("(555-555-5555"); // should return false.

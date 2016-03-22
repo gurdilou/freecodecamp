@@ -23,15 +23,46 @@ console.log("===== Arguments Optional =====");
 
 
 function add() {
-  return false;
+  // for (var i = 0; i < arguments.length; i++) {
+  //   var arg = arguments[i];
+  //   console.log("arg : "+arg);
+  // }
+  var valid = true;
+  var i = 0;
+  while(valid && i < arguments.length) {
+    if(typeof(arguments[i]) !== "number"  ){
+      valid = false;
+    }
+    i++;
+  }
+  if(!valid){
+    console.log("result : undefined");
+    return undefined;
+  }else{
+    var result = arguments[0];
+
+    if (arguments.length === 1) {
+      var sumAfter = function (toAdd) {
+        if(typeof(arguments[0]) !== "number"){
+          return undefined;
+        }
+        console.log("sumAfter : "+(result + toAdd));
+        return result + toAdd;
+      }
+      console.log("result = func");
+      return sumAfter;
+    }else{
+      console.log("result : "+result);
+      return result + arguments[1];
+    }
+  }
 }
-
-add(2,3);
-
 
 
 add(2, 3); // should return 5.
-add(2)(3); // should return 5.
+var a = add(2);
+a(3); // should return 5.
 add("http://bit.ly/IqT6zt"); //should return undefined.
 add(2, "3"); //should return undefined.
-add(2)([3]); // should return undefined.
+var b = add(2);
+b([3]); // should return undefined.

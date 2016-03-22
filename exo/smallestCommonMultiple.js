@@ -12,21 +12,55 @@ console.log("===== Smallest Common multiples =====");
 //
 //     Smallest Common Multiple
 
-
+//noprotect
 function smallestCommons(arr) {
   var result = 0;
 
   fillArray(arr);
 
+  var found = false;
+  var number = arr[arr.length - 1];
+  var i = 0;
+  while(!found && i < 10000000) {
+    if(isNumberIsOkay(arr, number)){
+      found = true;
+    }else{
+      number++;
+    }
+    i++;
+  }
 
-
-
+  result = number;
   console.log("result : "+result);
   return result;
 }
 
+//vérifie si le nombre est bon
+function isNumberIsOkay(arr, number) {
+  var isValid = true;
+  var i = 0;
+  while(isValid && (i < arr.length)){
+    var valueTested = arr[i];
+
+    if (number % valueTested !== 0) {
+      // console.log("Nb non valide : "+number+' / '+valueTested);
+      isValid = false;
+    }
+
+    i++;
+  }
+
+  return isValid;
+}
+
 // Prépare le tableau comme il faut
 function fillArray(arr) {
+  if(arr[0] > arr[1]) {
+    var tmp = arr[0];
+    arr[0] = arr[1];
+    arr[1] = tmp;
+  }
+
   var length = arr.length;
   for(var i = 1; i < length; i++){
     var prvs = arr[i-1];
@@ -42,7 +76,4 @@ function fillArray(arr) {
 }
 
 
-smallestCommons([1, 5]); // should return a number.
-smallestCommons([1, 5]); // should return 60.
-smallestCommons([5, 1]); // should return 60.
-smallestCommons([1, 13]); // should return 360360.
+smallestCommons([1, 13]); // should return a number.
